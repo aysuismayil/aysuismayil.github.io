@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aysu Ismayilzada — QA Engineer & AI QA Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #21262d;
+      --accent: #58a6ff;
+      --accent2: #bc8cff;
+      --green: #3fb950;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --card: #1c2128;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(13,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start;
+      padding: 6rem 2rem 4rem;
+      max-width: 900px; margin: 0 auto;
+      position: relative;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 2rem;
+      padding: 0.25rem 0.9rem; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 560px; margin-bottom: 2rem;
+    }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+    .badge {
+      font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.75rem;
+      border-radius: 0.4rem; background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); letter-spacing: 0.03em;
+    }
+    .badge.green { border-color: var(--green); color: var(--green); }
+    .badge.blue { border-color: var(--accent); color: var(--accent); }
+    .badge.purple { border-color: var(--accent2); color: var(--accent2); }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.7rem 1.4rem; border-radius: 0.5rem; font-size: 0.9rem;
+      font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--accent); color: #0d1117; }
+    .btn-primary:hover { background: #79b8ff; }
+    .btn-outline { border-color: var(--border); color: var(--text); background: transparent; }
+    .btn-outline:hover { border-color: var(--muted); }
+    .hero-quote {
+      margin-top: 3rem; padding: 1rem 1.25rem;
+      border-left: 3px solid var(--accent);
+      color: var(--muted); font-style: italic; font-size: 1rem;
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 2.5rem; color: var(--text);
+    }
+    .divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+      margin: 0 auto;
+    }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+    .about-highlights { display: flex; flex-direction: column; gap: 0.75rem; }
+    .highlight-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.875rem;
+    }
+    .highlight-item .icon { font-size: 1.1rem; }
+    .highlight-item span { color: var(--muted); }
+
+    /* SKILLS / TECH STACK */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.25rem; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 0.75rem; padding: 1.25rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .skill-card-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag { font-size: 0.75rem; padding: 0.2rem 0.55rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.3rem; color: var(--muted); }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 0.75rem; padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+    .project-card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .project-card-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .project-card-desc { font-size: 0.875rem; color: var(--muted); flex: 1; }
+    .project-card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+    .project-tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.3rem; color: var(--accent2); }
+
+    /* ACHIEVEMENTS */
+    .ach-list { display: flex; flex-direction: column; gap: 1rem; }
+    .ach-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 0.6rem; padding: 1rem 1.25rem;
+    }
+    .ach-icon { font-size: 1.3rem; }
+    .ach-content h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .ach-content p { font-size: 0.85rem; color: var(--muted); }
+
+    /* CURRENTLY EXPLORING */
+    .explore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    .explore-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 0.6rem; padding: 1rem 1.25rem;
+      font-size: 0.9rem; color: var(--muted);
+    }
+    .explore-card strong { color: var(--text); display: block; margin-bottom: 0.3rem; }
+
+    /* CONTACT */
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .contact-text p { color: var(--muted); font-size: 0.97rem; margin-bottom: 1.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 0.5rem; padding: 0.9rem 1.1rem;
+      text-decoration: none; color: var(--text); font-size: 0.9rem;
+      font-weight: 500; transition: border-color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); }
+    .contact-link .cl-icon { font-size: 1.2rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2.5rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.82rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Aysu Ismayilzada</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero" style="max-width:100%;padding-left:max(2rem, calc((100vw - 900px)/2));">
+  <div class="hero-tag">Software QA Engineer &amp; AI QA Analyst</div>
+  <h1>Hi, I'm <span>Aysu</span><br/>Ismayilzada 👋</h1>
+  <p class="hero-sub">5+ years testing Web &amp; Mobile (iOS/Android) applications — from test planning to release sign-off, at the intersection of quality, technology, and user experience.</p>
+  <div class="hero-badges">
+    <span class="badge green">Manual QA</span>
+    <span class="badge blue">API Testing</span>
+    <span class="badge blue">Mobile QA</span>
+    <span class="badge purple">AI &amp; GenAI QA</span>
+    <span class="badge green">Accessibility Testing</span>
+    <span class="badge blue">CI/CD</span>
+    <span class="badge purple">SQL</span>
+  </div>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#contact">Get in touch</a>
+    <a class="btn btn-outline" href="https://github.com/aysuismayil" target="_blank" rel="noopener">GitHub Profile</a>
+    <a class="btn btn-outline" href="https://www.linkedin.com/in/aysu-ismayilzada" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <blockquote class="hero-quote">"I find bugs before your users do." 🐞</blockquote>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Who I am</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Software QA Engineer &amp; AI QA Analyst with 5+ years of experience testing Web and Mobile (iOS/Android) applications across the full SDLC.</p>
+      <p>I work at the intersection of quality, technology, and user experience — creating test plans, test cases, and strategies for Functional, Regression, Smoke, Sanity, E2E, UAT, and Accessibility testing.</p>
+      <p>Currently, I'm involved in testing both UI and backend for a caregiving marketplace platform available on Web, iOS, and Android.</p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item"><span class="icon">🧪</span><span>5+ years Manual QA — Web &amp; Mobile (iOS/Android)</span></div>
+      <div class="highlight-item"><span class="icon">🔌</span><span>API Testing with Postman &amp; Swagger</span></div>
+      <div class="highlight-item"><span class="icon">♿</span><span>Accessibility Testing — WCAG 2.x, 508, VoiceOver, TalkBack, NVDA</span></div>
+      <div class="highlight-item"><span class="icon">🗄️</span><span>Database validation with SQL queries</span></div>
+      <div class="highlight-item"><span class="icon">⚙️</span><span>CI/CD experience with Jenkins &amp; GitHub Actions</span></div>
+      <div class="highlight-item"><span class="icon">🤖</span><span>AI &amp; GenAI QA — Claude, OpenAI, Gemini</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">What I use</p>
+  <h2 class="section-title">Tech Stack</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">Testing &amp; TMS</div>
+      <div class="skill-tags">
+        <span class="skill-tag">JIRA</span>
+        <span class="skill-tag">TestRail</span>
+        <span class="skill-tag">Zephyr</span>
+        <span class="skill-tag">Confluence</span>
+        <span class="skill-tag">Figma</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">API Testing</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Postman</span>
+        <span class="skill-tag">Swagger</span>
+        <span class="skill-tag">REST API</span>
+        <span class="skill-tag">SOAPUI</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Mobile Testing</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Android Studio</span>
+        <span class="skill-tag">ADB</span>
+        <span class="skill-tag">Xcode</span>
+        <span class="skill-tag">iOS</span>
+        <span class="skill-tag">Android</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Debugging</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Chrome DevTools</span>
+        <span class="skill-tag">Charles Proxy</span>
+        <span class="skill-tag">Chrome</span>
+        <span class="skill-tag">Safari</span>
+        <span class="skill-tag">Firefox</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Database</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">Oracle SQL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">CI/CD &amp; Version Control</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">AI Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Claude</span>
+        <span class="skill-tag">OpenAI</span>
+        <span class="skill-tag">Gemini</span>
+        <span class="skill-tag">GitHub Copilot</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Testing Types</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Functional</span>
+        <span class="skill-tag">Regression</span>
+        <span class="skill-tag">Smoke</span>
+        <span class="skill-tag">E2E</span>
+        <span class="skill-tag">UAT</span>
+        <span class="skill-tag">A11y</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">My work</p>
+  <h2 class="section-title">QA Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-card-icon">📓</div>
+      <div class="project-card-title">QA Learning Notes</div>
+      <p class="project-card-desc">Personal knowledge base covering QA fundamentals, testing methodologies, best practices, and study resources compiled over 5+ years.</p>
+      <div class="project-card-tags">
+        <span class="project-tag">Documentation</span>
+        <span class="project-tag">Testing Theory</span>
+        <span class="project-tag">SDLC</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-icon">📋</div>
+      <div class="project-card-title">ISTQB Preparation</div>
+      <p class="project-card-desc">Study materials, sample questions, and notes for ISTQB Foundation Level certification — covering testing principles, test design techniques, and test management.</p>
+      <div class="project-card-tags">
+        <span class="project-tag">ISTQB</span>
+        <span class="project-tag">Certification</span>
+        <span class="project-tag">Test Design</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-icon">🐛</div>
+      <div class="project-card-title">QA Bug Reports</div>
+      <p class="project-card-desc">Collection of well-structured bug reports showcasing clear reproduction steps, severity classification, environment details, and supporting evidence.</p>
+      <div class="project-card-tags">
+        <span class="project-tag">Bug Reports</span>
+        <span class="project-tag">JIRA</span>
+        <span class="project-tag">Defect Tracking</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-icon">✅</div>
+      <div class="project-card-title">QA Test Cases</div>
+      <p class="project-card-desc">Sample test suites covering Web, Mobile, API, and Accessibility testing — demonstrating test case design for real-world scenarios across different application types.</p>
+      <div class="project-card-tags">
+        <span class="project-tag">Test Cases</span>
+        <span class="project-tag">TestRail</span>
+        <span class="project-tag">Web &amp; Mobile</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <p class="section-label">What I've accomplished</p>
+  <h2 class="section-title">Achievements</h2>
+  <div class="ach-list">
+    <div class="ach-item">
+      <div class="ach-icon">🌟</div>
+      <div class="ach-content">
+        <h4>Full Accessibility Testing Program</h4>
+        <p>Implemented and led a comprehensive a11y testing program — covering WCAG 2.x, Section 508, VoiceOver, TalkBack, and NVDA screen readers.</p>
+      </div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">🚀</div>
+      <div class="ach-content">
+        <h4>Shift-Left Testing Methodology</h4>
+        <p>Initiated Shift-Left testing within the team, improving defect detection rates in early development stages.</p>
+      </div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">🤖</div>
+      <div class="ach-content">
+        <h4>AI Coaching System Test Strategy</h4>
+        <p>Developed and executed a comprehensive test strategy covering functional, regression, and GenAI-specific testing scenarios.</p>
+      </div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">🤝</div>
+      <div class="ach-content">
+        <h4>Cross-Team Collaboration Pipeline</h4>
+        <p>Built a strong collaboration pipeline with Customer Support for real-world defect triage and faster resolution cycles.</p>
+      </div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">📋</div>
+      <div class="ach-content">
+        <h4>QA Triage Leadership</h4>
+        <p>Led QA triage meetings — aligning cross-functional stakeholders on bug priorities, release readiness, and testing coverage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CURRENTLY EXPLORING -->
+<section id="explore">
+  <p class="section-label">Always learning</p>
+  <h2 class="section-title">Currently Exploring</h2>
+  <div class="explore-grid">
+    <div class="explore-card"><strong>AI in QA Workflows</strong>Integrating AI tools into QA for smarter test planning and coverage analysis.</div>
+    <div class="explore-card"><strong>Prompt Engineering</strong>Generating test cases and test strategies using LLMs and prompt engineering techniques.</div>
+    <div class="explore-card"><strong>GenAI Evaluation</strong>Building evaluation frameworks for testing AI product quality and reliability.</div>
+    <div class="explore-card"><strong>Automated Accessibility</strong>Learning automated accessibility auditing tools to complement manual testing.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's connect</p>
+  <h2 class="section-title">Get in Touch</h2>
+  <div class="contact-wrap">
+    <div class="contact-text">
+      <p>I'm open to new opportunities, collaborations, and conversations about quality engineering, AI testing, and accessibility. Feel free to reach out!</p>
+      <a class="btn btn-primary" href="mailto:aysuismayil@gmail.com">Say Hello ✉️</a>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://github.com/aysuismayil" target="_blank" rel="noopener">
+        <span class="cl-icon">🐙</span>github.com/aysuismayil
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/aysu-ismayilzada" target="_blank" rel="noopener">
+        <span class="cl-icon">💼</span>linkedin.com/in/aysu-ismayilzada
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; built by <a href="https://github.com/aysuismayil">Aysu Ismayilzada</a> · Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+</footer>
+
+</body>
+</html>
