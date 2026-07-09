@@ -1,478 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aysu Ismayilzada — QA Engineer & AI QA Analyst</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aysu Ismayilzada — QA Engineer &amp; AI QA Analyst</title>
+<meta name="description" content="Aysu Ismayilzada — Software QA Engineer and AI QA Analyst. Manual QA, API testing, accessibility, mobile QA, and GenAI-assisted quality engineering." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --border: #21262d;
-      --accent: #58a6ff;
-      --accent2: #bc8cff;
-      --green: #3fb950;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --card: #1c2128;
-    }
+:root {
+  --bg: #08090d;
+  --bg-soft: #0d0f16;
+  --surface: #12141c;
+  --card: rgba(255,255,255,0.035);
+  --border: rgba(255,255,255,0.09);
+  --text: #eef1f7;
+  --muted: #92a0b8;
+  --gold: #d8b26c;
+  --gold-soft: rgba(216,178,108,0.12);
+  --blue: #6ea8fe;
+  --violet: #a58bff;
+  --green: #5fd9a0;
+  --radius: 18px;
+}
 
-    html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(13,17,23,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 0.875rem;
-      font-weight: 500; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 2; pointer-events: none;
+  opacity: 0.035; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      align-items: flex-start;
-      padding: 6rem 2rem 4rem;
-      max-width: 900px; margin: 0 auto;
-      position: relative;
-    }
-    .hero-tag {
-      display: inline-block;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent);
-      border: 1px solid var(--accent); border-radius: 2rem;
-      padding: 0.25rem 0.9rem; margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-      color: var(--text);
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero-sub {
-      font-size: 1.1rem; color: var(--muted);
-      max-width: 560px; margin-bottom: 2rem;
-    }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
-    .badge {
-      font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.75rem;
-      border-radius: 0.4rem; background: var(--card); border: 1px solid var(--border);
-      color: var(--muted); letter-spacing: 0.03em;
-    }
-    .badge.green { border-color: var(--green); color: var(--green); }
-    .badge.blue { border-color: var(--accent); color: var(--accent); }
-    .badge.purple { border-color: var(--accent2); color: var(--accent2); }
-    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.7rem 1.4rem; border-radius: 0.5rem; font-size: 0.9rem;
-      font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer;
-      border: 1px solid transparent;
-    }
-    .btn-primary { background: var(--accent); color: #0d1117; }
-    .btn-primary:hover { background: #79b8ff; }
-    .btn-outline { border-color: var(--border); color: var(--text); background: transparent; }
-    .btn-outline:hover { border-color: var(--muted); }
-    .hero-quote {
-      margin-top: 3rem; padding: 1rem 1.25rem;
-      border-left: 3px solid var(--accent);
-      color: var(--muted); font-style: italic; font-size: 1rem;
-    }
+body::after {
+  content: "";
+  position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(216,178,108,0.10), transparent 60%);
+  pointer-events: none; z-index: 0;
+}
 
-    /* SECTIONS */
-    section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      margin-bottom: 2.5rem; color: var(--text);
-    }
-    .divider {
-      width: 100%; height: 1px;
-      background: linear-gradient(to right, var(--border), transparent);
-      margin: 0 auto;
-    }
+::selection { background: var(--gold); color: #08090d; }
 
-    /* ABOUT */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
-    .about-highlights { display: flex; flex-direction: column; gap: 0.75rem; }
-    .highlight-item {
-      display: flex; align-items: flex-start; gap: 0.75rem;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.875rem;
-    }
-    .highlight-item .icon { font-size: 1.1rem; }
-    .highlight-item span { color: var(--muted); }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
 
-    /* SKILLS / TECH STACK */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.25rem; }
-    .skill-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 0.75rem; padding: 1.25rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .skill-card-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .skill-tag { font-size: 0.75rem; padding: 0.2rem 0.55rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.3rem; color: var(--muted); }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 
-    /* PROJECTS */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
-    .project-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 0.75rem; padding: 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-      display: flex; flex-direction: column;
-    }
-    .project-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
-    .project-card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
-    .project-card-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .project-card-desc { font-size: 0.875rem; color: var(--muted); flex: 1; }
-    .project-card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
-    .project-tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.3rem; color: var(--accent2); }
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(8,9,13,0.7);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+}
+nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 32px; max-width: 1080px; margin: 0 auto; }
+.nav-logo {
+  font-family: 'Fraunces', serif; font-size: 1.15rem; font-style: italic;
+  letter-spacing: 0.01em; color: var(--text);
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2.2rem; }
+.nav-links a {
+  color: var(--muted); font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.25s;
+  position: relative; padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px;
+  background: var(--gold); transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; z-index: 210; }
 
-    /* ACHIEVEMENTS */
-    .ach-list { display: flex; flex-direction: column; gap: 1rem; }
-    .ach-item {
-      display: flex; gap: 1rem; align-items: flex-start;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 0.6rem; padding: 1rem 1.25rem;
-    }
-    .ach-icon { font-size: 1.3rem; }
-    .ach-content h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
-    .ach-content p { font-size: 0.85rem; color: var(--muted); }
+.dot-nav {
+  position: fixed; right: 28px; top: 50%; transform: translateY(-50%); z-index: 150;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.dot-nav a {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--border);
+  display: block; position: relative; transition: all 0.3s;
+}
+.dot-nav a::before {
+  content: attr(data-label); position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+  font-size: 0.7rem; letter-spacing: 0.05em; color: var(--muted); white-space: nowrap;
+  opacity: 0; transition: opacity 0.25s; text-transform: uppercase;
+}
+.dot-nav a:hover::before { opacity: 1; }
+.dot-nav a.active { background: var(--gold); transform: scale(1.5); }
+@media (max-width: 900px){ .dot-nav{ display:none; } }
 
-    /* CURRENTLY EXPLORING */
-    .explore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
-    .explore-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 0.6rem; padding: 1rem 1.25rem;
-      font-size: 0.9rem; color: var(--muted);
-    }
-    .explore-card strong { color: var(--text); display: block; margin-bottom: 0.3rem; }
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 140px 0 80px; position: relative;
+}
+.hero-grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 60px; align-items: center; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.76rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(216,178,108,0.35); border-radius: 3rem;
+  padding: 0.4rem 1rem; margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeUp 0.9s ease forwards;
+}
+.eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+.hero h1 {
+  font-family: 'Fraunces', serif; font-weight: 600;
+  font-size: clamp(2.6rem, 5.6vw, 4.4rem); line-height: 1.08;
+  margin-bottom: 1.4rem; letter-spacing: -0.01em;
+  opacity: 0; animation: fadeUp 0.9s ease 0.12s forwards;
+}
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
+.hero-sub {
+  font-size: 1.12rem; color: var(--muted); max-width: 540px; margin-bottom: 2.2rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.24s forwards;
+}
+.hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.6rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.36s forwards; }
+.badge {
+  font-size: 0.76rem; font-weight: 600; padding: 0.4rem 0.85rem;
+  border-radius: 0.5rem; background: var(--card); border: 1px solid var(--border);
+  color: var(--muted); letter-spacing: 0.02em;
+}
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.9s ease 0.48s forwards; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.7rem; border-radius: 0.6rem; font-size: 0.9rem;
+  font-weight: 600; transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  cursor: pointer; border: 1px solid transparent; will-change: transform;
+}
+.btn-primary { background: linear-gradient(135deg, var(--gold), #b98d4a); color: #14100a; }
+.btn-primary:hover { box-shadow: 0 14px 30px rgba(216,178,108,0.25); }
+.btn-outline { border-color: var(--border); color: var(--text); background: transparent; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* CONTACT */
-    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .contact-text p { color: var(--muted); font-size: 0.97rem; margin-bottom: 1.5rem; }
-    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
-    .contact-link {
-      display: flex; align-items: center; gap: 0.75rem;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 0.5rem; padding: 0.9rem 1.1rem;
-      text-decoration: none; color: var(--text); font-size: 0.9rem;
-      font-weight: 500; transition: border-color 0.2s;
-    }
-    .contact-link:hover { border-color: var(--accent); }
-    .contact-link .cl-icon { font-size: 1.2rem; }
+.hero-photo-wrap { display: flex; justify-content: center;
+  opacity: 0; animation: fadeIn 1.1s ease 0.3s forwards; }
+.photo-ring {
+  width: 280px; height: 280px; border-radius: 50%; padding: 5px;
+  background: conic-gradient(from 180deg, var(--gold), var(--violet), var(--blue), var(--gold));
+  position: relative;
+}
+.photo-ring::before {
+  content: ""; position: absolute; inset: -14px; border-radius: 50%;
+  border: 1px solid var(--border);
+}
+.photo-placeholder {
+  width: 100%; height: 100%; border-radius: 50%; background: var(--surface);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  color: var(--muted); font-size: 0.8rem; text-align: center; gap: 8px;
+  border: 1px dashed var(--border);
+}
+.photo-placeholder .icon { font-size: 1.8rem; opacity: 0.6; }
 
-    /* FOOTER */
-    footer {
-      text-align: center; padding: 2.5rem 1rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted); font-size: 0.82rem;
-    }
-    footer a { color: var(--accent); text-decoration: none; }
+.hero-quote {
+  margin-top: 3.2rem; padding: 1.1rem 1.4rem;
+  border-left: 2px solid var(--gold);
+  color: var(--muted); font-family: 'Fraunces', serif; font-style: italic; font-size: 1.05rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards;
+}
 
-    /* RESPONSIVE */
-    @media (max-width: 680px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .contact-wrap { grid-template-columns: 1fr; }
-      nav { padding: 1rem; }
-      .nav-links { gap: 1rem; }
-    }
-  </style>
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.marquee-wrap {
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  overflow: hidden; padding: 22px 0; background: var(--bg-soft);
+}
+.marquee-track { display: flex; width: max-content; animation: scroll-marquee 26s linear infinite; }
+.marquee-track span {
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 1.3rem; color: var(--muted);
+  padding: 0 2.2rem; white-space: nowrap; display: flex; align-items: center; gap: 2.2rem;
+}
+.marquee-track span::after { content: "\2726"; color: var(--gold); font-style: normal; font-size: 0.9rem; }
+@keyframes scroll-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+section { padding: 110px 0; position: relative; }
+.section-alt { background: var(--bg-soft); }
+.section-head { margin-bottom: 56px; }
+.section-num {
+  font-family: 'Fraunces', serif; font-style: italic; color: var(--gold);
+  font-size: 0.95rem; margin-bottom: 0.6rem; letter-spacing: 0.05em;
+}
+.section-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(1.9rem, 3.6vw, 2.7rem); }
+.section-sub { color: var(--muted); max-width: 620px; margin-top: 14px; font-size: 1rem; }
+
+.reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; }
+.about-text p { color: var(--muted); margin-bottom: 1.2rem; font-size: 1.02rem; }
+.about-highlight {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px; position: relative; overflow: hidden;
+}
+.about-highlight::before {
+  content: ""; position: absolute; top: -40%; left: -20%; width: 60%; height: 160%;
+  background: radial-gradient(circle, var(--gold-soft), transparent 65%);
+}
+.about-highlight h4 { font-family:'Fraunces', serif; font-size: 1rem; margin-bottom: 10px; color: var(--gold); }
+.about-highlight p { color: var(--muted); font-size: 0.92rem; }
+
+.grid { display: grid; gap: 20px; }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.skill-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 26px; transition: transform 0.35s, border-color 0.35s, background 0.35s;
+}
+.skill-card:hover { transform: translateY(-8px); border-color: var(--gold); background: rgba(216,178,108,0.05); }
+.skill-card .emoji { font-size: 1.5rem; margin-bottom: 12px; display: block; }
+.skill-card h3 { font-size: 1rem; margin-bottom: 8px; }
+.skill-card p { color: var(--muted); font-size: 0.88rem; }
+
+.tools-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+.tool-group h4 {
+  font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 14px;
+}
+.tool-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tool-tags span {
+  font-size: 0.82rem; padding: 6px 14px; border-radius: 30px;
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+  transition: all 0.25s;
+}
+.tool-tags span:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; }
+.project-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px; display: flex; flex-direction: column; transition: transform 0.35s, border-color 0.35s;
+  position: relative; overflow: hidden;
+}
+.project-card:hover { transform: translateY(-8px); border-color: rgba(216,178,108,0.4); }
+.badge-tag {
+  align-self: flex-start; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 14px;
+}
+.badge-tag.sample { background: rgba(95,217,160,0.12); color: var(--green); }
+.badge-tag.placeholder { background: rgba(165,139,255,0.14); color: var(--violet); }
+.badge-tag.practice { background: var(--gold-soft); color: var(--gold); }
+.project-card h3 { font-size: 1.12rem; margin-bottom: 10px; font-family: 'Fraunces', serif; }
+.project-card p.desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; flex: 1; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.project-tags span { font-size: 0.74rem; padding: 4px 11px; border-radius: 20px; background: rgba(110,168,254,0.1); color: var(--blue); }
+.project-link { font-size: 0.86rem; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; }
+.project-link.disabled { color: var(--muted); cursor: default; opacity: 0.7; }
+
+.project-card.ghost { border-style: dashed; align-items: center; justify-content: center; text-align: center; }
+.project-card.ghost .emoji { font-size: 1.8rem; margin-bottom: 10px; }
+.project-card.ghost h3 { font-size: 1rem; margin-bottom: 6px; }
+.project-card.ghost p { color: var(--muted); font-size: 0.86rem; }
+
+.ai-exploration-strip {
+  margin-top: 34px; display: flex; gap: 18px; align-items: flex-start;
+  background: linear-gradient(135deg, rgba(165,139,255,0.07), rgba(216,178,108,0.05));
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 28px;
+}
+.ai-exploration-strip .emoji { font-size: 1.6rem; flex-shrink: 0; }
+.ai-exploration-strip h4 { font-family: 'Fraunces', serif; font-size: 1rem; margin-bottom: 6px; }
+.ai-exploration-strip p { color: var(--muted); font-size: 0.88rem; }
+
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.cert-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 26px; display: flex; gap: 18px; align-items: flex-start; transition: transform 0.3s, border-color .3s;
+}
+.cert-card:hover { transform: translateY(-6px); border-color: var(--gold); }
+.cert-icon {
+  width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), #8a6a33);
+  display: flex; align-items: center; justify-content: center; font-weight: 700; color: #14100a;
+  font-family: 'Fraunces', serif;
+}
+.cert-card h3 { font-size: 0.98rem; margin-bottom: 6px; line-height: 1.4; }
+.cert-meta { color: var(--muted); font-size: 0.84rem; margin-bottom: 6px; }
+.cert-desc { color: var(--muted); font-size: 0.84rem; }
+
+.achieve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+.achieve-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; transition: transform .3s, border-color .3s; }
+.achieve-card:hover { transform: translateY(-6px); border-color: var(--violet); }
+.achieve-card .emoji { font-size: 1.5rem; margin-bottom: 12px; display: block; }
+.achieve-card h3 { font-size: 1rem; margin-bottom: 8px; }
+.achieve-card p { color: var(--muted); font-size: 0.88rem; }
+
+.explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.explore-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; background: var(--card); }
+.explore-card h4 { font-size: 0.95rem; margin-bottom: 8px; color: var(--gold); }
+.explore-card p { color: var(--muted); font-size: 0.86rem; }
+
+.contact-wrap { display: grid; grid-template-columns: 1fr 0.9fr; gap: 60px; align-items: center; }
+.contact-wrap h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 20px; }
+.contact-wrap p.lead { color: var(--muted); margin-bottom: 30px; max-width: 480px; }
+.contact-list { display: flex; flex-direction: column; gap: 16px; }
+.contact-list a { display: flex; align-items: center; gap: 12px; color: var(--text); font-size: 0.95rem; transition: color .25s; }
+.contact-list a:hover { color: var(--gold); }
+.contact-list .ic { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.contact-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; text-align: center; }
+.contact-card .big-emoji { font-size: 2.2rem; margin-bottom: 16px; }
+.contact-card h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; margin-bottom: 10px; }
+.contact-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 22px; }
+
+footer { text-align: center; padding: 40px 24px; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.82rem; }
+footer span { color: var(--gold); }
+
+@media (max-width: 860px) {
+  .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 240px; background: var(--bg-soft);
+    flex-direction: column; padding: 100px 28px; border-left: 1px solid var(--border);
+    transform: translateX(100%); transition: transform 0.35s; gap: 1.8rem; }
+  .nav-links.open { transform: translateX(0); }
+  .menu-btn { display: block; }
+  .hero-grid { display: flex; flex-direction: column-reverse; text-align: center; }
+  .hero-badges, .hero-cta { justify-content: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#hero">Aysu Ismayilzada</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#achievements">Achievements</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<header>
+  <nav>
+    <div class="nav-logo">Aysu <span>Ismayilzada</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+  </nav>
+</header>
+
+<nav class="dot-nav" id="dotNav">
+  <a href="#about" data-label="About" class="active"></a>
+  <a href="#skills" data-label="Skills"></a>
+  <a href="#tools" data-label="Tools"></a>
+  <a href="#projects" data-label="Projects"></a>
+  <a href="#certifications" data-label="Certifications"></a>
+  <a href="#achievements" data-label="Achievements"></a>
+  <a href="#contact" data-label="Contact"></a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="hero" style="max-width:100%;padding-left:max(2rem, calc((100vw - 900px)/2));">
-  <div class="hero-tag">Software QA Engineer &amp; AI QA Analyst</div>
-  <h1>Hi, I'm <span>Aysu</span><br/>Ismayilzada 👋</h1>
-  <p class="hero-sub">5+ years testing Web &amp; Mobile (iOS/Android) applications — from test planning to release sign-off, at the intersection of quality, technology, and user experience.</p>
-  <div class="hero-badges">
-    <span class="badge blue">API Testing</span>
-    <span class="badge blue">Mobile QA</span>
-    <span class="badge purple">AI &amp; GenAI QA</span>
-    <span class="badge green">Accessibility Testing</span>
-    <span class="badge blue">CI/CD</span>
-    <span class="badge purple">SQL</span>
+<section class="hero" id="about">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">Available for new opportunities</div>
+      <h1>Hi, I'm <em>Aysu</em><br />Ismayilzada 👋</h1>
+      <p class="hero-sub">Software QA Engineer &amp; AI QA Analyst — 5+ years testing Web and Mobile (iOS/Android) applications, from test planning to release sign-off, at the intersection of quality, technology, and user experience.</p>
+      <div class="hero-badges">
+        <span class="badge">API Testing</span>
+        <span class="badge">Mobile QA</span>
+        <span class="badge">AI &amp; GenAI QA</span>
+        <span class="badge">Accessibility Testing</span>
+        <span class="badge">CI/CD</span>
+        <span class="badge">SQL</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary magnetic">Get in touch</a>
+        <a href="https://github.com/aysuismayil" target="_blank" rel="noopener" class="btn btn-outline magnetic">GitHub Profile</a>
+        <a href="https://linkedin.com/in/aysu-ismayilzada" target="_blank" rel="noopener" class="btn btn-outline magnetic">LinkedIn</a>
+      </div>
+      <div class="hero-quote">"I find bugs before your users do." 🐞</div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-ring">
+        <div class="photo-placeholder">
+          <span class="icon">📷</span>
+          Add your photo here<br />(square, 500x500px)
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="hero-cta">
-    <a class="btn btn-primary" href="#contact">Get in touch</a>
-    <a class="btn btn-outline" href="https://github.com/aysuismayil" target="_blank" rel="noopener">GitHub Profile</a>
-    <a class="btn btn-outline" href="https://www.linkedin.com/in/aysu-ismayilzada" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-  <blockquote class="hero-quote">"I find bugs before your users do." 🐞</blockquote>
 </section>
 
-<div class="divider"></div>
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Manual Testing</span><span>API Testing</span><span>Mobile QA</span><span>Accessibility</span><span>SQL Validation</span><span>CI/CD</span><span>GenAI QA</span><span>Test Case Design</span>
+    <span>Manual Testing</span><span>API Testing</span><span>Mobile QA</span><span>Accessibility</span><span>SQL Validation</span><span>CI/CD</span><span>GenAI QA</span><span>Test Case Design</span>
+  </div>
+</div>
 
-<!-- ABOUT -->
-<section id="about">
-  <p class="section-label">Who I am</p>
-  <h2 class="section-title">About Me</h2>
-  <div class="about-grid">
+<section id="about-detail">
+  <div class="container about-grid reveal">
     <div class="about-text">
+      <div class="section-num">01</div>
+      <h2 class="section-title" style="margin-bottom:24px;">About Me</h2>
       <p>I'm a Software QA Engineer &amp; AI QA Analyst with 5+ years of experience testing Web and Mobile (iOS/Android) applications across the full SDLC.</p>
       <p>I work at the intersection of quality, technology, and user experience — creating test plans, test cases, and strategies for Functional, Regression, Smoke, Sanity, E2E, UAT, and Accessibility testing.</p>
       <p>Currently, I'm involved in testing both UI and backend for a caregiving marketplace platform available on Web, iOS, and Android.</p>
     </div>
-    <div class="about-highlights">
-      <div class="highlight-item"><span class="icon">🧪</span><span>5+ years Manual QA — Web &amp; Mobile (iOS/Android)</span></div>
-      <div class="highlight-item"><span class="icon">🔌</span><span>API Testing with Postman &amp; Swagger</span></div>
-      <div class="highlight-item"><span class="icon">♿</span><span>Accessibility Testing — WCAG 2.x, 508, VoiceOver, TalkBack, NVDA</span></div>
-      <div class="highlight-item"><span class="icon">🗄️</span><span>Database validation with SQL queries</span></div>
-      <div class="highlight-item"><span class="icon">⚙️</span><span>CI/CD experience with Jenkins &amp; GitHub Actions</span></div>
-      <div class="highlight-item"><span class="icon">🤖</span><span>AI &amp; GenAI QA — Claude, OpenAI, Gemini</span></div>
+    <div class="about-highlight">
+      <h4>Quick Facts</h4>
+      <p>📍 Based in New Jersey, USA<br /><br />
+      🧪 5+ years of Manual QA across Web &amp; Mobile<br /><br />
+      🤖 Actively applying GenAI tools to QA workflows<br /><br />
+      🎯 Passionate about accessibility &amp; inclusive testing</p>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- SKILLS -->
-<section id="skills">
-  <p class="section-label">What I use</p>
-  <h2 class="section-title">Tech Stack</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-card-title">Testing &amp; TMS</div>
-      <div class="skill-tags">
-        <span class="skill-tag">JIRA</span>
-        <span class="skill-tag">TestRail</span>
-        <span class="skill-tag">Zephyr</span>
-        <span class="skill-tag">Confluence</span>
-        <span class="skill-tag">Figma</span>
-      </div>
+<section class="section-alt" id="skills">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <h2 class="section-title">Core Skills</h2>
+      <p class="section-sub">The testing disciplines I rely on most to ship confident, quality releases.</p>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-title">API Testing</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Postman</span>
-        <span class="skill-tag">Swagger</span>
-        <span class="skill-tag">REST API</span>
-        <span class="skill-tag">SOAPUI</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-title">Mobile Testing</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Android Studio</span>
-        <span class="skill-tag">ADB</span>
-        <span class="skill-tag">Xcode</span>
-        <span class="skill-tag">iOS</span>
-        <span class="skill-tag">Android</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-title">Debugging</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Chrome DevTools</span>
-        <span class="skill-tag">Charles Proxy</span>
-        <span class="skill-tag">Chrome</span>
-        <span class="skill-tag">Safari</span>
-        <span class="skill-tag">Firefox</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-title">Database</div>
-      <div class="skill-tags">
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag">Oracle SQL</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-title">CI/CD &amp; Version Control</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Jenkins</span>
-        <span class="skill-tag">GitHub Actions</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">GitHub</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-title">AI Tools</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Claude</span>
-        <span class="skill-tag">OpenAI</span>
-        <span class="skill-tag">Gemini</span>
-        <span class="skill-tag">GitHub Copilot</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-title">Testing Types</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Functional</span>
-        <span class="skill-tag">Regression</span>
-        <span class="skill-tag">Smoke</span>
-        <span class="skill-tag">E2E</span>
-        <span class="skill-tag">UAT</span>
-        <span class="skill-tag">A11y</span>
-      </div>
+    <div class="grid grid-3">
+      <div class="skill-card"><span class="emoji">🧪</span><h3>Manual &amp; Mobile QA</h3><p>5+ years testing Web and Mobile (iOS/Android) apps — functional, regression, smoke, sanity, E2E and UAT.</p></div>
+      <div class="skill-card"><span class="emoji">🔌</span><h3>API Testing</h3><p>Validating REST endpoints, status codes and payloads with Postman &amp; Swagger.</p></div>
+      <div class="skill-card"><span class="emoji">♿</span><h3>Accessibility Testing</h3><p>WCAG 2.x, Section 508, VoiceOver, TalkBack and NVDA screen-reader audits.</p></div>
+      <div class="skill-card"><span class="emoji">🗄️</span><h3>Database Validation</h3><p>Verifying data integrity behind the UI with SQL queries.</p></div>
+      <div class="skill-card"><span class="emoji">⚙️</span><h3>CI/CD Awareness</h3><p>Working alongside Jenkins &amp; GitHub Actions pipelines for build and release testing.</p></div>
+      <div class="skill-card"><span class="emoji">🤖</span><h3>AI &amp; GenAI QA</h3><p>Using Claude, OpenAI and Gemini to accelerate test design, coverage analysis and defect triage.</p></div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label">My work</p>
-  <h2 class="section-title">QA Projects</h2>
-  <div class="projects-grid" style="grid-template-columns: 1fr; max-width: 580px;">
-    <div class="project-card">
-      <div class="project-card-icon">📱</div>
-      <div class="project-card-title">Mobile QA Testing — Biometric Authentication</div>
-      <p class="project-card-desc">Performed mobile application testing using Samsung Remote Test Lab to validate fingerprint authentication functionality.</p>
-      <ul style="margin: 0.75rem 0 0 1.1rem; color: var(--muted); font-size: 0.875rem; line-height: 1.8;">
-        <li>Executed positive and negative biometric scenarios</li>
-        <li>Observed system behavior under invalid fingerprint attempts</li>
-        <li>Validated end-to-end authentication flow</li>
-        <li>Practiced real-device remote testing</li>
-      </ul>
-      <div class="project-card-tags" style="margin-top: 1rem;">
-        <span class="project-tag">Samsung Remote Test Lab</span>
-        <span class="project-tag">Mobile Device Testing</span>
-        <span class="project-tag">Biometric Auth</span>
-        <span class="project-tag">Training Project</span>
-      </div>
-      <a href="https://github.com/aysuismayil" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:1.1rem;font-size:0.85rem;color:var(--accent);text-decoration:none;font-weight:600;">
-        🔗 View Repository
-      </a>
+<section id="tools">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <h2 class="section-title">Tools &amp; Technologies</h2>
+      <p class="section-sub">My day-to-day toolkit across test management, APIs, mobile, debugging and data.</p>
+    </div>
+    <div class="tools-groups">
+      <div class="tool-group"><h4>Testing &amp; TMS</h4><div class="tool-tags"><span>Jira</span><span>TestRail</span><span>Zephyr</span><span>Confluence</span><span>Figma</span></div></div>
+      <div class="tool-group"><h4>API Testing</h4><div class="tool-tags"><span>Postman</span><span>Swagger</span><span>REST API</span><span>SoapUI</span></div></div>
+      <div class="tool-group"><h4>Mobile Testing</h4><div class="tool-tags"><span>Android Studio</span><span>ADB</span><span>Xcode</span><span>iOS</span><span>Android</span></div></div>
+      <div class="tool-group"><h4>Debugging</h4><div class="tool-tags"><span>Chrome DevTools</span><span>Charles Proxy</span><span>Chrome</span><span>Safari</span><span>Firefox</span></div></div>
+      <div class="tool-group"><h4>Database</h4><div class="tool-tags"><span>SQL</span><span>MySQL</span><span>Oracle SQL</span></div></div>
+      <div class="tool-group"><h4>CI/CD &amp; Version Control</h4><div class="tool-tags"><span>Jenkins</span><span>GitHub Actions</span><span>Git</span><span>GitHub</span></div></div>
+      <div class="tool-group"><h4>AI Tools</h4><div class="tool-tags"><span>Claude</span><span>OpenAI</span><span>Gemini</span><span>GitHub Copilot</span></div></div>
+      <div class="tool-group"><h4>Testing Types</h4><div class="tool-tags"><span>Functional</span><span>Regression</span><span>Smoke</span><span>E2E</span><span>UAT</span><span>A11y</span></div></div>
     </div>
   </div>
+</section>
 
-<div class="divider"></div>
+<section class="section-alt" id="projects">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">A mix of real testing work and practice-based QA case studies — built to demonstrate structured test thinking, not just tool names.</p>
+    </div>
+    <div class="project-grid">
 
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <p class="section-label">What I've accomplished</p>
-  <h2 class="section-title">Achievements</h2>
-  <div class="ach-list">
-    <div class="ach-item">
-      <div class="ach-icon">🌟</div>
-      <div class="ach-content">
-        <h4>Full Accessibility Testing Program</h4>
-        <p>Implemented and led a comprehensive a11y testing program — covering WCAG 2.x, Section 508, VoiceOver, TalkBack, and NVDA screen readers.</p>
+      <div class="project-card">
+        <span class="badge-tag practice">Practice QA Project</span>
+        <h3>📱 Mobile QA — Biometric Authentication</h3>
+        <p class="desc">Performed mobile application testing using Samsung Remote Test Lab to validate fingerprint authentication functionality, including positive and negative biometric scenarios and end-to-end auth flow validation.</p>
+        <div class="project-tags"><span>Samsung Remote Test Lab</span><span>Mobile Device Testing</span><span>Biometric Auth</span></div>
+        <a href="https://github.com/aysuismayil" target="_blank" rel="noopener" class="project-link">🔗 View Repository</a>
       </div>
-    </div>
-    <div class="ach-item">
-      <div class="ach-icon">🚀</div>
-      <div class="ach-content">
-        <h4>Shift-Left Testing Methodology</h4>
-        <p>Initiated Shift-Left testing within the team, improving defect detection rates in early development stages.</p>
+
+      <div class="project-card">
+        <span class="badge-tag sample">Sample QA Project</span>
+        <h3>🌡️ Thermostat Testing Project</h3>
+        <p class="desc">A boundary value analysis and specification-based test design exercise for a thermostat controller. Covers positive scenarios, negative/invalid inputs, edge cases, boundary values, and sample bug reports — scored 100% on TestDome's QA assessment.</p>
+        <div class="project-tags"><span>Boundary Value Analysis</span><span>Positive &amp; Negative Testing</span><span>Bug Reporting</span></div>
+        <a href="https://github.com/aysuismayil/thermostat-testdome-qa" target="_blank" rel="noopener" class="project-link">🔗 View Repository</a>
       </div>
-    </div>
-    <div class="ach-item">
-      <div class="ach-icon">🤖</div>
-      <div class="ach-content">
-        <h4>AI Coaching System Test Strategy</h4>
-        <p>Developed and executed a comprehensive test strategy covering functional, regression, and GenAI-specific testing scenarios.</p>
+
+      <div class="project-card">
+        <span class="badge-tag sample">Sample QA Project</span>
+        <h3>🖥️ UI Testing Project</h3>
+        <p class="desc">A practice case study focused on UI validation across layout consistency, buttons and interactive states, form behavior, navigation flow, responsive breakpoints, and basic accessibility checks.</p>
+        <div class="project-tags"><span>UI Validation</span><span>Responsive Testing</span><span>Accessibility Checks</span></div>
+        <span class="project-link disabled">🔗 Repository link coming soon</span>
       </div>
-    </div>
-    <div class="ach-item">
-      <div class="ach-icon">🤝</div>
-      <div class="ach-content">
-        <h4>Cross-Team Collaboration Pipeline</h4>
-        <p>Built a strong collaboration pipeline with Customer Support for real-world defect triage and faster resolution cycles.</p>
+
+      <div class="project-card">
+        <span class="badge-tag placeholder">Placeholder — Coming Soon</span>
+        <h3>🔗 API + SQL Validation Sample</h3>
+        <p class="desc">A planned sample project combining API testing (Postman collections) with backend data validation using SQL — currently being built out.</p>
+        <div class="project-tags"><span>Postman</span><span>SQL</span><span>Data Validation</span></div>
+        <span class="project-link disabled">🚧 In progress</span>
       </div>
+
+      <div class="project-card ghost">
+        <span class="emoji">🚧</span>
+        <h3>More Projects Coming Soon</h3>
+        <p>New QA case studies are in progress — check back shortly.</p>
+      </div>
+
     </div>
-    <div class="ach-item">
-      <div class="ach-icon">📋</div>
-      <div class="ach-content">
-        <h4>QA Triage Leadership</h4>
-        <p>Led QA triage meetings — aligning cross-functional stakeholders on bug priorities, release readiness, and testing coverage.</p>
+
+    <div class="ai-exploration-strip">
+      <span class="emoji">🤖</span>
+      <div>
+        <h4>AI Exploration — Prompt &amp; GenAI Testing</h4>
+        <p>Not a client project, but active hands-on learning: exploring how prompt engineering and generative AI can accelerate test case generation, bug-report drafting, and QA evaluation frameworks — grounded in the Generative AI for QA certification below.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- CURRENTLY EXPLORING -->
-<section id="explore">
-  <p class="section-label">Always learning</p>
-  <h2 class="section-title">Currently Exploring</h2>
-  <div class="explore-grid">
-    <div class="explore-card"><strong>AI in QA Workflows</strong>Integrating AI tools into QA for smarter test planning and coverage analysis.</div>
-    <div class="explore-card"><strong>Prompt Engineering</strong>Generating test cases and test strategies using LLMs and prompt engineering techniques.</div>
-    <div class="explore-card"><strong>GenAI Evaluation</strong>Building evaluation frameworks for testing AI product quality and reliability.</div>
-    <div class="explore-card"><strong>Automated Accessibility</strong>Learning automated accessibility auditing tools to complement manual testing.</div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-label">Let's connect</p>
-  <h2 class="section-title">Get in Touch</h2>
-  <div class="contact-wrap">
-    <div class="contact-text">
-      <p>I'm open to new opportunities, collaborations, and conversations about quality engineering, AI testing, and accessibility. Feel free to reach out!</p>
-      <a class="btn btn-primary" href="mailto:aysuismayil@gmail.com">Say Hello ✉️</a>
+<section id="certifications">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-sub">Continuous learning to stay sharp as QA practices evolve alongside AI.</p>
     </div>
-    <div class="contact-links">
-      <a class="contact-link" href="https://github.com/aysuismayil" target="_blank" rel="noopener">
-        <span class="cl-icon">🐙</span>github.com/aysuismayil
-      </a>
-      <a class="contact-link" href="https://www.linkedin.com/in/aysu-ismayilzada" target="_blank" rel="noopener">
-        <span class="cl-icon">💼</span>linkedin.com/in/aysu-ismayilzada
-      </a>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">U</div>
+        <div>
+          <h3>Generative AI for QA Professionals and Software Testers</h3>
+          <div class="cert-meta">Udemy · Completed February 2026</div>
+          <div class="cert-desc">Applied generative AI techniques to accelerate QA workflows, test case generation, and defect analysis.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">C</div>
+        <div>
+          <h3>Programming for Everybody (Getting Started with Python)</h3>
+          <div class="cert-meta">University of Michigan via Coursera · Completed September 2025</div>
+          <div class="cert-desc">Built foundational Python programming skills to support test scripting and future automation work.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="section-alt" id="achievements">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <h2 class="section-title">Achievements</h2>
+      <p class="section-sub">Highlights from where I've driven quality beyond day-to-day test execution.</p>
+    </div>
+    <div class="achieve-grid">
+      <div class="achieve-card"><span class="emoji">🌟</span><h3>Full Accessibility Testing Program</h3><p>Implemented and led a comprehensive a11y testing program — covering WCAG 2.x, Section 508, VoiceOver, TalkBack, and NVDA screen readers.</p></div>
+      <div class="achieve-card"><span class="emoji">🚀</span><h3>Shift-Left Testing Methodology</h3><p>Initiated Shift-Left testing within the team, improving defect detection rates in early development stages.</p></div>
+      <div class="achieve-card"><span class="emoji">🤖</span><h3>AI Coaching System Test Strategy</h3><p>Developed and executed a comprehensive test strategy covering functional, regression, and GenAI-specific testing scenarios.</p></div>
+      <div class="achieve-card"><span class="emoji">🤝</span><h3>Cross-Team Collaboration Pipeline</h3><p>Built a strong collaboration pipeline with Customer Support for real-world defect triage and faster resolution cycles.</p></div>
+      <div class="achieve-card"><span class="emoji">📋</span><h3>QA Triage Leadership</h3><p>Led QA triage meetings — aligning cross-functional stakeholders on bug priorities, release readiness, and testing coverage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="exploring">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-num">07</div>
+      <h2 class="section-title">Currently Exploring</h2>
+    </div>
+    <div class="explore-grid">
+      <div class="explore-card"><h4>AI in QA Workflows</h4><p>Integrating AI tools into QA for smarter test planning and coverage analysis.</p></div>
+      <div class="explore-card"><h4>Prompt Engineering</h4><p>Generating test cases and test strategies using LLMs and prompt engineering techniques.</p></div>
+      <div class="explore-card"><h4>GenAI Evaluation</h4><p>Building evaluation frameworks for testing AI product quality and reliability.</p></div>
+      <div class="explore-card"><h4>Automated Accessibility</h4><p>Learning automated accessibility auditing tools to complement manual testing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="contact">
+  <div class="container contact-wrap reveal">
+    <div>
+      <div class="section-num">08</div>
+      <h2>Let's Connect</h2>
+      <p class="lead">I'm open to new opportunities, collaborations, and conversations about quality engineering, AI testing, and accessibility. Feel free to reach out!</p>
+      <div class="contact-list">
+        <a href="mailto:hello@example.com">📧 hello@example.com <span style="color:var(--muted); font-size:0.8rem;">(update with your email)</span></a>
+        <a href="https://github.com/aysuismayil" target="_blank" rel="noopener">🐙 github.com/aysuismayil</a>
+        <a href="https://linkedin.com/in/aysu-ismayilzada" target="_blank" rel="noopener">💼 linkedin.com/in/aysu-ismayilzada</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="big-emoji">✉️</div>
+      <h3>Say Hello</h3>
+      <p>Whether it's a role, a project, or just a QA chat — my inbox is open.</p>
+      <a href="mailto:hello@example.com" class="btn btn-primary magnetic" style="width:100%; justify-content:center;">Send a Message</a>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <p>Designed &amp; built by <a href="https://github.com/aysuismayil">Aysu Ismayilzada</a> · Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+  Designed &amp; built by <span>Aysu Ismayilzada</span> · Hosted on GitHub Pages
 </footer>
 
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){ if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  var dotLinks = document.querySelectorAll('.dot-nav a');
+  var sections = Array.prototype.map.call(dotLinks, function(a){ return document.querySelector(a.getAttribute('href')); });
+  var dotIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        var id = '#' + entry.target.id;
+        dotLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === id); });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(function(s){ if (s) dotIO.observe(s); });
+
+  document.querySelectorAll('.magnetic').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var x = e.clientX - r.left - r.width/2;
+      var y = e.clientY - r.top - r.height/2;
+      btn.style.transform = 'translate(' + x*0.18 + 'px,' + y*0.35 + 'px)';
+    });
+    btn.addEventListener('mouseleave', function(){ btn.style.transform = 'translate(0,0)'; });
+  });
+</script>
 </body>
 </html>
